@@ -47,7 +47,7 @@ getMaxSum(arr);
 
 
 
-// Challenge: 19-flatten
+
 // Difficulty:  Intermediate
 // Prompt:
 // - Write a function named flatten that accepts a single array that may contain nested arrays and returns a new "flattened" array.
@@ -63,7 +63,7 @@ getMaxSum(arr);
 // flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 /*-----------------------------------------------------------------*/
-// Your solution for 19-flatten here:
+
 
 function flatten(arr) {
     arr.forEach((element) => {
@@ -77,3 +77,64 @@ function flatten(arr) {
 
 flatten( [1, [2, 3]] );
 flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
+
+
+/*-----------------------------------------------------------------*/
+
+// Recursion
+
+function findMax(arr){
+    // This function returns the largest number in a given array.
+    // base case
+    let largestNum = -Infinity;
+    let index = 0
+      function max() {
+        if(index == arr.length){
+        return largestNum;
+        }
+        if(arr[index] > largestNum){
+          largestNum = arr[index]
+        }
+        index++;
+        return max() 
+      }
+    return max();
+}
+function factorial(num){
+    // This function returns the factorial of a given number.
+    let sum = 1;
+    function fact(num){
+      if(num < 1) {
+      return sum;
+      }
+      sum *= num;
+      return fact(num-1);
+    }
+    return fact(num); 
+}
+function fibonacci(n){
+    // This function returns the Nth number in the fibonacci sequence.
+    // https://en.wikipedia.org/wiki/Fibonacci_number
+    // For this function, the first two fibonacci numbers are 1 and 1
+  let fib = [1, 1];
+  let finalNum = n;
+  function fibHelper(){
+    if(n === 0){
+      return fib[finalNum-1];
+    }
+     fib.push(fib[fib.length-1] + fib[fib.length-2])
+     n--;
+    return fibHelper();
+  }
+  return fibHelper();
+}
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------------------------------*/
