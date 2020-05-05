@@ -39,7 +39,7 @@ function getMaxSum(arr){
             max = Math.max(max, start);
         }
     }
-    console.log(max);
+    //console.log(max);
     return max;
 }
 arr = [-2, -1, 1, 10, -6, 14, 7, -6] // 3
@@ -65,18 +65,18 @@ getMaxSum(arr);
 /*-----------------------------------------------------------------*/
 
 
-function flatten(arr) {
-    arr.forEach((element) => {
-        if (typeOf(element) === "object") {
-            console.log(element)
-            return;
-        }
-    })
-}
+// function flatten(arr) {
+//     arr.forEach((element) => {
+//         if (typeOf(element) === "object") {
+//             console.log(element)
+//             return;
+//         }
+//     })
+// }
 
 
-flatten( [1, [2, 3]] );
-flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
+// flatten( [1, [2, 3]] );
+// flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 
 
 /*-----------------------------------------------------------------*/
@@ -100,6 +100,7 @@ function findMax(arr){
       }
     return max();
 }
+
 function factorial(num){
     // This function returns the factorial of a given number.
     let sum = 1;
@@ -112,6 +113,7 @@ function factorial(num){
     }
     return fact(num); 
 }
+
 function fibonacci(n){
     // This function returns the Nth number in the fibonacci sequence.
     // https://en.wikipedia.org/wiki/Fibonacci_number
@@ -129,6 +131,152 @@ function fibonacci(n){
   return fibHelper();
 }
 
+// function coinFlips(n){
+    // This function returns an array of all possible outcomes from flipping a coin N times.
+    // Input type: Integer
+    // For example, coinFlips(2) would return the following:
+    // ["HH", "HT", "TH", "TT"]
+    // H stands for Heads and T stands for tails
+    // Represent the two outcomes of each flip as "H" or "T"
+    // let outcomes = [];
+    // let half = Math.pow(2, n) / 2
+    // let flipper = 1;
+
+    // function flip(){
+    //     for(let i = 0; i < Math.pow(2, n); i++){
+    //         if()
+    //     }
+    // }
+
+
+
+
+
+
+
+/*-----------------------------------------------------------------*/
+
+// Write a function that finds the median of 2 sorted lists.
+let arr1 = [-5, 3, 6, 12, 15]
+let arr2 = [-12, -10, -6, -3, 4, 10]
+let arr3 = []
+
+function medianOfTwoArrays(arrA, arrB){
+    let arrC = [];
+    while (arrA.length || arrB.length){
+        if (arrA[0] > arrB[0]) {
+            arrC.push(arrB.shift())
+        } else {
+            arrC.push(arrA.shift())
+        }
+    }
+    
+    if (arrC.length % 2) {
+        return arrC[Math.floor(arrC.length / 2)]
+    } else {
+        let sum = arrC[(arrC.length / 2) - 1] + arrC[arrC.length / 2 ]
+        return sum / 2
+    }
+
+}
+
+
+// console.log(medianOfTwoArrays(arr1, arr2))
+
+/*-----------------------------------------------------------------*/
+
+// function romanToInt(str) {
+//     romanObj = { 
+//         1: "I", 
+//         5: "V", 
+//         10: "X", 
+//         50: "L", 
+//         100: "C", 
+//         500: "D", 
+//         1000: "M", 
+//         5000: "G", 
+//         10000: "H"
+//     }
+//     for (let i = 1; i < str.length; i++){
+//         let char = str.charAt(i)
+//         if (char === "I" || char === "X" || char === "C"){
+//             let charAfter = str.charAt(i+1);
+//             if (charAfter === "V")
+//         }
+
+//     }
+
+// }
+
+
+
+// function romanToInt(str) {
+//     if(str == null) return -1;
+//     let num = charToInt(str.charAt(0));
+//     let pre, curr;
+
+//     for(let i = 1; i < str1.length; i++){
+//         curr = charToInt(str.charAt(i));
+//         pre = charToInt(str.charAt(i-1));
+//         if(curr <= pre){
+//             num += curr;
+//         } else {
+//             num = num - pre*2 + curr;
+//         }
+//     }
+//     return num;
+// }
+
+// function charToInt(c){
+//     switch (c){
+//         case 'I': return 1;
+//         case 'V': return 5;
+//         case 'X': return 10;
+//         case 'L': return 50;
+//         case 'C': return 100;
+//         case 'D': return 500;
+//         case 'M': return 1000;
+//         default: return -1;
+// }
+// }
+
+
+
+
+romanObj = { 
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+    G: 5000,
+    H: 10000
+}
+function romanToInt(str) {
+    let num = 0;
+    for (i=0; i<str.length; i++) {
+        currentValue = romanObj[str[i]]
+        nextValue = romanObj[str[i+1]]
+        if (currentValue < nextValue) {
+            num+= nextValue - currentValue;
+            i++;
+        } else {
+            num += currentValue;
+        }
+    }
+    return num;
+}
+
+console.log(romanToInt('XXVI'));
+console.log(romanToInt('CI'));
+
+console.log(romanToInt("III"), "should be 3")
+console.log(romanToInt("IV"), "should be 4")
+console.log(romanToInt("IX"), "should be 9")
+console.log(romanToInt("LVIII"), "should be 58")
+console.log(romanToInt("MCMXCIV"), "should be 1994")
 
 
 
@@ -137,4 +285,6 @@ function fibonacci(n){
 
 
 
+
+/*-----------------------------------------------------------------*/
 /*-----------------------------------------------------------------*/
